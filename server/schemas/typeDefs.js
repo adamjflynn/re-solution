@@ -5,15 +5,17 @@ const typeDefs = gql`
     type User {
         _id: ID
         username: String
+        email: String
         savedWorkouts: [Workouts]
     }
     
     type Workout {
         workoutId: String
         name: String
+        bodyPart: String
         targetMuscleGroup: String
         targetMuscle: String
-        equiptment: String
+        equiptment: [String]
     }
     
     type Auth {
