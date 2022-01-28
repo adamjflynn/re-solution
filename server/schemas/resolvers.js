@@ -10,6 +10,27 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
+          .populate('savedWorkout');
+        return userData;
+      }
+      throw new AuthenticationError('Not logged in');
+    },
+
+    findExercise: async (parent, args, context) => {
+      if (context.user) {
+        const exerciseData = await Exercise.find()
+          .select('-__v -password')
+          .populate('bodyPart');
+          
+        return exerciseData;
+      }
+      throw new AuthenticationError('Not logged in');
+    },
+
+    previousWorkouts: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
           .populate('Workout');
         return userData;
       }
@@ -73,7 +94,7 @@ const resolvers = {
     if(context.user) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: context.user._id },
-      { $pull: { Workout: { _id: args } } },
+      { $pull: { Workout: { _id: args.input } } },
       { new: true }
     )
     return updatedUser;

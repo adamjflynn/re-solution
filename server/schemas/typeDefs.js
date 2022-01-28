@@ -17,18 +17,12 @@ type Workout{
 type Exercise {
 
     bodyPart: [String!]
-    {
-        equiptment: [String!]
-        {
-            target: [String!]
-            {
-                gifUrl: [String!]
-                id: [Int!]
-                name: [String!]
-            }
-        }
-    }
-
+    equiptment: [String!]
+    target: [String!]
+    gifUrl: [String!]
+    id: [Int!]
+    name: [String!]
+            
 }
 
 type Auth {
@@ -42,7 +36,6 @@ input SavedWorkout {
         exercises: [Exercise]
     ]}
 }
-
 
 type Query {
     me: [User]!

@@ -27,7 +27,7 @@ const userSchema = new Schema({
         required: true,
         minlength: 5
     },
-    savedWorkout:  [Workout.schema]
+     savedWorkout:  [Workout.schema] 
   
 });
 

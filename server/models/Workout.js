@@ -1,32 +1,32 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, Types } = mongoose;
 
 const exerciseSchema = new Schema ({
     bodyPart: {
         type: String,
         required: true,
     },
-    workoutId: { 
-        type: String,
-        required: true,
-    }, 
-    name: { 
-        type: String,
+    equiptment: { 
+        type: Types.ObjectId,
         required: true,
     },
     target: { 
         type: String,
         required: true,
     },
-    equiptment: { 
-        type: String,
-        required: true,
-    },
     gifUrl: { 
         type: String,
         required: true,
-    }
     },
+    id: { 
+        type: Number,
+        required: true,
+    }, 
+    name: { 
+        type: String,
+        required: true,
+    }
+},
 
     {timestamps: true }
 );
