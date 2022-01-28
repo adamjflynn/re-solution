@@ -1,37 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
-import LoginForm from "./components/LoginForm";
+import Header from './components/Header';
+import Footer from './components/Footer';
 
+import User from './pages/User';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 function App() {
- const adminUser = {
-   email: "admin@admin.com",
-   password: "admin123"
- }
-
- const [user, setUser] = useState({name: "", email: ""});
- const [error, setError] = useState("");
-
- const Login = details => {
-    console.log(details);
-
-    if (details.email == adminUser.email && details.password == adminUser.password)
- }
- 
- const Logout = () => {
-   console.log("Logout");
- }
-      
- return (
-   <div className="App">
-     {(user.email != "") ? (
-        <div className="welcome">
-         <h2>Welcome, <span>{user.name}</span></h2>
-         <button>Logout</button>
+  return (
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <div className="container">
+            
+              <Route exact path="/" component={User} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              
+            
+          </div>
+          <Footer />
         </div>
- ) : (
-    <LoginForm Login={Login} error={error} />
- )}
- </div>
+      </Router>
+    </ApolloProvider>
+  );
+}
 
 export default App;
