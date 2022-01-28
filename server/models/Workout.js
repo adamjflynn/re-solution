@@ -6,7 +6,12 @@ const Exercise = require('./Exercise')
 
 const workoutSchema = new Schema({
 
-exercise: [Exercise.schema],
+exercise: [
+    {
+        type:Schema.Types.ObjectId, 
+        ref: 'Exercise'
+    }
+],
 
 date: {
   type: Date,
@@ -27,7 +32,6 @@ sets: {
     type: Number,
     length: 1
 }
-
 
 });
 

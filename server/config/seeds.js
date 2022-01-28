@@ -1,2 +1,8 @@
 const db = require('./connection');
-// const { User, workout } = require('../models');
+const { User, Exercise, Workout } = require('../models')
+
+db.once('open', async () => {
+    console.log('Database fully seeded!')
+
+    process.exit();
+})
