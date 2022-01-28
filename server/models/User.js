@@ -27,8 +27,7 @@ const userSchema = new Schema({
         required: true,
         minlength: 5
     },
-    savedWorkout:  [Workout.schema]
-  
+    savedWorkouts: [Workout.schema]
 });
 
 //Password creation for middleware and then compares password with hashed password
