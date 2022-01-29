@@ -1,7 +1,7 @@
 import React from 'react';
 
-function history() {
+function NewWorkout() {
   return <div></div>;
 }
 
-export default history;
+export default NewWorkout;
