@@ -1,14 +1,12 @@
 const { gql } = require('apollo-server-express');
 const { User, Workout } = require('../models'); //need to verify this route
 
-
 const typeDefs = gql`
 type User {
     _id: ID!
     email: String! 
     savedWorkout: [Workout]
 }
-
 type Workout{
     workouts: [Exercise]
     date: String!
@@ -17,7 +15,6 @@ type Workout{
     sets: Int
     
 }
-
 type Exercise {
     
     bodyPart: String!
@@ -28,22 +25,18 @@ type Exercise {
     name: String!
     
 }
-
-
 type Auth {
     token: ID!
     user: User
 }
-
-
 type Query {
     me: [User]!
-    findBodyPart: [Exercise]!
-    findEquipment: [Exercise]
-    findTarget: [Exercise] 
+    findBodyPart:[Exercise]!
+    findExercies: [Exercise]! 
+    findEquipment: [Exercise]!
+    findTarget: [Exercise]!
     previousWorkouts: [Workout]!
 }
-
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(email: String!, password: String!): Auth
