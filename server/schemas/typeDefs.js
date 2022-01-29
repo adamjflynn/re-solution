@@ -38,8 +38,9 @@ type Auth {
 
 type Query {
     me: [User]!
-    findExercies: [Exercise]! 
-
+    findBodyPart: [Exercise]!
+    findEquipment: [Exercise]
+    findTarget: [Exercise] 
     previousWorkouts: [Workout]!
 }
 

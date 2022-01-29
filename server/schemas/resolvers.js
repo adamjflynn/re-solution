@@ -17,10 +17,24 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
 
-    findExercise: async (parent, args, context) => {
+    findBodyPart: async (parent, args, context) => {
       if (context.user) {
-        const exerciseData = await Exercise.find()      
+        const exerciseData = await Exercise.find('bodyPart')      
         return exerciseData;
+      }
+      // throw new AuthenticationError('Not logged in');
+    },
+    findEquipment: async (parent, args, context) => {
+      if (context.user) {
+        const equipmentData = await Exercise.find('equipment')      
+        return equipmentData;
+      }
+      // throw new AuthenticationError('Not logged in');
+    },
+    findTarget: async (parent, args, context) => {
+      if (context.user) {
+        const targetData = await Exercise.find('target')      
+        return Data;
       }
       // throw new AuthenticationError('Not logged in');
     },
