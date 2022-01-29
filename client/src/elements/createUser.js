@@ -23,8 +23,9 @@ export default class CreateUsers extends Component {
 
 		const user = {
 			username: this.state.username,
-		};
-	}
+		}
+        console.log(user);
+    }
 
 	render() {
 		return (

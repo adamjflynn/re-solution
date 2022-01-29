@@ -43,7 +43,7 @@ export default class CreateWorkout extends Component {
 			duration: e.target.value,
 		});
 	}
-	onChangeDate(e) {
+	onChangeDate(date) {
 		this.setState({
 			date: date,
 		});
