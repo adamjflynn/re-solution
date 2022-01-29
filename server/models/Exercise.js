@@ -18,7 +18,7 @@ const exerciseSchema = new Schema ({
         type: String,
         required: true,
     },
-    equiptment: { 
+    equipment: { 
         type: String,
         required: true,
     },
