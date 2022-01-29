@@ -5,23 +5,25 @@ import {
 	Route,
 } from "react-router-dom";
 
-// import Navbar from "./elements/navbar";
-import ExerciseList from "./elements/exerciseList";
-import EditWorkout from "./elements/editWorkout";
-import CreateWorkout from "./elements/createWorkout";
-import CreateUser from "./elements/createUser";
+import Navbar from "./components/Navbar";
+import ExerciseList from "./components/EexerciseList";
+import EditWorkout from "./components/EditWorkout";
+import CreateWorkout from "./components/CreateWorkout";
+import CreateUser from "./components/CreateUser";
+import Login from "./components/LoginForm";
 
 function App() {
 	return (
 		<BrowserRouter>
 			<div className="container">
+			<Navbar />
 			<Routes>
-			{/* <Navbar /> */}
 	
-			<Route path="/" exact element={<ExerciseList/>} />
-			<Route path="/edit" element={<EditWorkout/>} />
-			<Route path="/create" element={<CreateWorkout/>} />
-			<Route path="/user" element={<CreateUser/>} />
+			<Route path="/" exact component={<ExerciseList/>} />
+			<Route path="/edit" component={<EditWorkout/>} />
+			<Route path="/create" component={<CreateWorkout/>} />
+			<Route path="/user" component={<CreateUser/>} />
+			<Route path="/login" component={<Login/>} />
 			</Routes>
 			</div>
 			</BrowserRouter>
