@@ -19,14 +19,10 @@ const resolvers = {
 
     findExercise: async (parent, args, context) => {
       if (context.user) {
-        const exerciseData = await Exercise.find('bodyPart')
-        .then
-          .select('-__v -password')
-          .populate('bodyPart');
-          
+        const exerciseData = await Exercise.find()      
         return exerciseData;
       }
-      throw new AuthenticationError('Not logged in');
+      // throw new AuthenticationError('Not logged in');
     },
 
     previousWorkouts: async (parent, args, context) => {

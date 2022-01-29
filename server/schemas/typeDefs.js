@@ -21,7 +21,7 @@ type Workout{
 type Exercise {
     
     bodyPart: String!
-    equiptment: String!
+    equipment: String!
     target: String!
     gifUrl: String!
     id: Int!
@@ -38,14 +38,15 @@ type Auth {
 
 type Query {
     me: [User]!
-    findExercise: [Exercise]! 
+    findExercies: [Exercise]! 
+
     previousWorkouts: [Workout]!
 }
 
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(email: String!, password: String!): Auth
-    saveExercise(bodyPart: String!, equiptment: String!, target: String!, gifUrl: String!, id: Int!, name: String!): Workout
+    saveExercise(bodyPart: String!, equipment: String!, target: String!, gifUrl: String!, id: Int!, name: String!): Workout
     removeWorkout(workoutId: String!): User
 }
 `;
