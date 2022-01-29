@@ -1,2 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+function workout() {
+  return <div></div>;
+}
+
+export default workout;

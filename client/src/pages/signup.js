@@ -9,6 +9,7 @@ const Signup = () => {
     email: '',
     password: '',
   });
+
   const [addUser, { error }] = useMutation(ADD_USER);
 
   // update state based on form input changes
@@ -75,7 +76,7 @@ const Signup = () => {
               </button>
             </form>
 
-          
+            {error && <div> Signup Failed </div>}          
           </div>
         </div>
       </div>
