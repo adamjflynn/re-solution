@@ -30,30 +30,55 @@ db.once('open', async () => {
             workoutID:"3223",
             name:"star jump (male)",
             target:"cardiovascular system"
+        },
+        {
+            bodyPart:"upper arms",
+            equipment:"dumbbell",
+            "gifUrl":"http://d205bpvrqc9yn1.cloudfront.net/0285.gif",
+            workoutID:"0285",
+            name:"dumbbell alternate biceps curl",
+            target:"biceps"
+        },
+        {
+            bodyPart:"upper arms",
+            equipment:"dumbbell",
+            gifUrl:"http://d205bpvrqc9yn1.cloudfront.net/1648.gif",
+            workoutID:"1648",
+            name:"dumbbell alternate seated hammer curl",
+            target:"biceps"
+        },
+        {
+            bodyPart:"upper arms",
+            equipment:"dumbbell",
+            gifUrl:"http://d205bpvrqc9yn1.cloudfront.net/1654.gif",
+            workoutID:"1654",
+            name:"dumbbell biceps curl reverse",
+            target:"biceps"
         }
 
     ])
 
     console.log(exercises);
+
     console.log("Exercises seeded!");
 
-    // await Workout.deleteMany();
+    await Workout.deleteMany();
 
-    // const workouts = await Workout.insertMany([
+    const workouts = await Workout.insertMany([
 
-    // ])
+    ])
 
-    // console.log("Workouts seeded!")
+    console.log("Workouts seeded!")
 
-    // await User.deleteMany();
+    await User.deleteMany();
 
-    // const users = await User.insertMany([
+    const users = await User.insertMany([
 
-    // ])
+    ])
     
-    // console.log('Users seeded!')
+    console.log('Users seeded!')
 
-    // console.log('Database fully seeded!')
+    console.log('Database fully seeded!')
 
     process.exit();
 })
