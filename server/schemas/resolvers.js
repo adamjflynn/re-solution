@@ -10,7 +10,8 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('savedWorkout');
+          .populate('email')
+          .populate('savedWorkouts');
         return userData;
       }
       throw new AuthenticationError('Not logged in');
@@ -18,7 +19,8 @@ const resolvers = {
 
     findExercise: async (parent, args, context) => {
       if (context.user) {
-        const exerciseData = await Exercise.find()
+        const exerciseData = await Exercise.find('bodyPart')
+        .then
           .select('-__v -password')
           .populate('bodyPart');
           
@@ -77,19 +79,7 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
   },
-    saveWorkout: async (parent, args , context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { Workout: args.input } },
-          { new: true }
-        )
 
-        return updatedUser;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-  },
   removeWorkout: async (parent, args, context) => {
     if(context.user) {
     const updatedUser = await User.findOneAndUpdate(
