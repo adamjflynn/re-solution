@@ -1,5 +1,5 @@
 const { gql } = require('apollo-server-express');
-const { User, Workout } = require('../models'); //need to verify this route
+const { User, Workout, Exercise } = require('../models'); //need to verify this route
 
 
 const typeDefs = gql`
@@ -8,48 +8,34 @@ type User {
     email: String! 
     savedWorkout: [Workout]
 }
-
 type Workout{
     workouts: [savedWorkout]
     
 }
-
 type Exercise {
-
     bodyPart: [String!]
-    {
-        equiptment: [String!]
-        {
-            target: [String!]
-            {
-                gifUrl: [String!]
-                id: [Int!]
-                name: [String!]
-            }
-        }
-    }
-
+    equiptment: [String!]
+    target: [String!]
+    gifUrl: [String!]
+    id: [Int!]
+    name: [String!]
+            
 }
-
 type Auth {
     token: ID!
     user: User
 }
-
 input SavedWorkout {
     workouts: {[
         _id: ID
         exercises: [Exercise]
     ]}
 }
-
-
 type Query {
     me: [User]!
     findExercise: [Exercise]! 
     previousWorkouts: [Workout]!
 }
-
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(email: String!, password: String!): Auth

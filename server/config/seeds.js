@@ -6,7 +6,12 @@ db.once('open', async () => {
 
     const excerises = await Exercise.insertMany([
         {
-
+            bodyPart:"cardio",
+            equipment:"body weight",
+            gifUrl:"http://d205bpvrqc9yn1.cloudfront.net/0685.gif",
+            workoutID:"0685",
+            name:"run",
+            target:"cardiovascular system"     
         }
 
     ])

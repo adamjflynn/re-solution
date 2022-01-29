@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, Types } = mongoose;
 
 const exerciseSchema = new Schema ({
     bodyPart: {

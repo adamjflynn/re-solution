@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const { Schema, Types } = mongoose;
 
 const Exercise = require('./Exercise')
 
@@ -20,17 +20,17 @@ date: {
 
 duration: {
   type: Number,
-  length: 1
+  minlength: 1
 },
 
 reps: {
     type: Number,
-    length: 1
+    minlength: 1
 },
 
 sets: {
     type: Number,
-    length: 1
+    minlength: 1
 }
 
 });
