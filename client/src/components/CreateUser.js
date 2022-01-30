@@ -33,12 +33,12 @@ export default class CreateUsers extends Component {
 				<h3>Create New User</h3>
 				<form onSubmit={this.onSubmit}>
 					<div className="form-group">
-						<label>Username: </label>
+						<label>Name: </label>
 						<input
 							type="text"
 							required
 							className="form-control"
-							value={this.state.username}
+							value={this.state.name}
 							onChange={this.onChangeUser}
 						/>
 					</div>
