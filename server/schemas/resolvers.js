@@ -1,12 +1,45 @@
 
 const { AuthenticationError } = require('apollo-server-express');
 
-const { User, Workout } = require('../models');
+const { User, Workout, Exercise } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate('email')
+          .populate('savedWorkouts');
+        return userData;
+      }
+      throw new AuthenticationError('Not logged in');
+    },
+
+    findBodyPart: async (parent, args, context) => {
+      if (context.user) {
+        const exerciseData = await Exercise.find('bodyPart')      
+        return exerciseData;
+      }
+      // throw new AuthenticationError('Not logged in');
+    },
+    findEquipment: async (parent, args, context) => {
+      if (context.user) {
+        const equipmentData = await Exercise.find('equipment')      
+        return equipmentData;
+      }
+      // throw new AuthenticationError('Not logged in');
+    },
+    findTarget: async (parent, args, context) => {
+      if (context.user) {
+        const targetData = await Exercise.find('target')      
+        return Data;
+      }
+      // throw new AuthenticationError('Not logged in');
+    },
+
+    previousWorkouts: async (parent, args, context) => {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
@@ -56,24 +89,12 @@ const resolvers = {
 
       throw new AuthenticationError('You need to be logged in!');
   },
-    saveWorkout: async (parent, args , context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { Workout: args.input } },
-          { new: true }
-        )
 
-        return updatedUser;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-  },
   removeWorkout: async (parent, args, context) => {
     if(context.user) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: context.user._id },
-      { $pull: { Workout: { _id: args } } },
+      { $pull: { Workout: { _id: args.input } } },
       { new: true }
     )
     return updatedUser;
