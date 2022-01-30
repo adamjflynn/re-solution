@@ -1,7 +1,6 @@
 const { gql } = require('apollo-server-express');
 const { User, Workout } = require('../models'); //need to verify this route
 
-
 const typeDefs = gql`
 type User {
     _id: ID!
