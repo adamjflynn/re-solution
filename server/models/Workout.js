@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const { Schema, Types } = mongoose;
 
 const Exercise = require('./Exercise')
 
 const workoutSchema = new Schema({
 
-exercise: [Exercise.schema],
+exercise: [
+    {
+        type:Schema.Types.ObjectId, 
+        ref: 'Exercise'
+    }
+],
 
 date: {
   type: Date,
@@ -15,19 +20,18 @@ date: {
 
 duration: {
   type: Number,
-  length: 1
+  minlength: 1
 },
 
 reps: {
     type: Number,
-    length: 1
+    minlength: 1
 },
 
 sets: {
     type: Number,
-    length: 1
+    minlength: 1
 }
-
 
 });
 
