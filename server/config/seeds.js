@@ -4,7 +4,7 @@ const { User, Exercise, Workout } = require('../models');
 
 db.once('open', async () => {
     await Exercise.deleteMany();
-    console.log("Deleted All Exercises!")
+    console.log("Deleted All Exercises!");
 
     const exercises = await Exercise.insertMany([
         {
@@ -56,7 +56,7 @@ db.once('open', async () => {
             target:"biceps"
         }
 
-    ])
+    ]);
 
     console.log(exercises);
 
@@ -65,20 +65,43 @@ db.once('open', async () => {
     await Workout.deleteMany();
 
     const workouts = await Workout.insertMany([
+        {
+            exercise: exercises[0],
+            date: 2022-01-05,
+            duration: 20
+        },
+        {
+            exercise: exercises[5],
+            date: 2022-01-06,
+            reps: 10,
+            sets: 3
+        }
 
     ])
-
-    console.log("Workouts seeded!")
+    console.log(workouts);
+    console.log("Workouts seeded!");
 
     await User.deleteMany();
 
     const users = await User.insertMany([
 
-    ])
-    
-    console.log('Users seeded!')
+        {
+            email: "test@test.com",
+            password: "Testerino22",
+            savedWorkout: [workouts[0]]
+        },
+        {
+            email: "steven@test.com",
+            password: "BubbaGump11",
+            savedWorkout: [workouts[1]]
+        }
 
-    console.log('Database fully seeded!')
+    ]);
+    
+    console.log(users);
+    console.log('Users seeded!');
+
+    console.log('Database fully seeded!');
 
     process.exit();
 })
