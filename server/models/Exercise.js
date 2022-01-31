@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, Types } = mongoose;
 
 const exerciseSchema = new Schema ({
     bodyPart: {
         type: String,
         required: true,
     },
-    workoutId: { 
+    workoutID: { 
         type: String,
         required: true,
     }, 
@@ -18,7 +18,7 @@ const exerciseSchema = new Schema ({
         type: String,
         required: true,
     },
-    equiptment: { 
+    equipment: { 
         type: String,
         required: true,
     },
