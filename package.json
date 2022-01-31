@@ -1,0 +1,26 @@
+{
+  "name": "re-solution",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+      "start": "node server/server.js",
+      "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+      "install": "cd server && npm i && cd ../client && npm i",
+      "seed": "cd server && npm run seed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamjflynn/re-solution.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamjflynn/re-solution/issues"
+  },
+  "homepage": "https://github.com/adamjflynn/re-solution#readme",
+  "devDependencies": {
+    "concurrently": "^7.0.0"
+  }
+}

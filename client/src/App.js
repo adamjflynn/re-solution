@@ -1,40 +1,46 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import {
-	BrowserRouter, Routes,
-	Route,
-} from "react-router-dom";
+import React from 'react';
+import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import Navbar from "./components/Navbar";
-import ExerciseList from "./components/ExerciseList";
-import EditWorkout from "./components/EditWorkout";
-import CreateWorkout from "./components/CreateWorkout";
-import CreateUser from "./components/CreateUser";
-import LoginForm from "./components/LoginForm";
+import Header from './components/Header';
+import Footer from './components/Footer';
 
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
+import Profile from './pages/Profile';
+import NoMatch from './pages/NoMatch';
 
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
+
+const client = new ApolloClient({
+  link: httpLink,
+  cache: new InMemoryCache(),
+});
 
 function App() {
-	return (
-		<BrowserRouter>
+  return (
+    <ApolloProvider client={client}>
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
+          <div className="container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={Signup} />
+              <Route exact path="/profile" component={Profile} />
 
-			<div className="flex-column justify-flex-start min-100-vh">
-			
-			<Navbar />
-		
-			
-			<Routes>
-	
-			<Route path="/login" component={<LoginForm/>} />
-			<Route path="/edit" component={<EditWorkout/>} />
-			<Route path="/create" component={<CreateWorkout/>} />
-			<Route path="/user" component={<CreateUser/>} />
-			<Route path="/ExerciseList" component={<ExerciseList/>} />
-
-			</Routes>
-			</div>
-			</BrowserRouter>
-	);
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+          <Footer />
+        </div>
+      </Router>
+    </ApolloProvider>
+  );
 }
 
 export default App;
