@@ -1,28 +1,23 @@
-// import React from 'react';
-// import { useQuery } from '@apollo/client';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-// import { QUERY_EXERCISES } from '../utils/queries';
-// import ExerciseList from '../components/ExerciseList';
+const Home = () => {
+return (
+  <main>
+      <header className="bg-secondary mb-4 py-2 flex-row align-center">
+    <div className="container flex-row justify-space-between-lg justify-center align-center">
+      <Link to="/">
+      <h1>(RE)Solution</h1>
+      </Link>
 
-// const Home = () => {
-//   // use useQuery hook to make query request
-//   const { loading, data } = useQuery(QUERY_EXERCISES);
-//   const exercises = data?.exercises || [];
-//     console.log(exercises);
+      <nav className="text-center">
+        <Link to="/login">Login</Link>
+        <Link to="/signup">Signup</Link>
+      </nav>
+    </div>
+  </header>
+  </main>
+);
+};
 
-//   return (
-//     <main>
-//   <div className="flex-row justify-space-between">
-//     <div className="col-12 mb-3">
-//       {loading ? (
-//         <div>Loading...</div>
-//       ) : (
-//         <ExerciseList exercises={exercise} title="Checkout your progress" />
-//       )}
-//     </div>
-//   </div>
-// </main>
-//   );
-// };
-
-// export default Home;
+export default Home;
