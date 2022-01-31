@@ -8,21 +8,16 @@ import Navbar from './components/Navbar'
 import App from './App'
 
 import {
-  BrowserRouter as Router, 
+  BrowserRouter as Router,
   Routes
-  // Route
 } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/* <App /> */}
-
     <Router>
-  <Navbar />
-  {/* <Routes> */}
-     <App />
-  {/* </Routes> */}
-</Router>
+      <Navbar />
+      <App />
+    </Router>
 
   </React.StrictMode>,
   document.getElementById('root')
