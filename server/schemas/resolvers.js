@@ -11,7 +11,7 @@ const resolvers = {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
           .populate('email')
-          .populate('savedWorkouts');
+          .populate('savedWorkout');
         return userData;
       }
       throw new AuthenticationError('Not logged in');
@@ -19,22 +19,36 @@ const resolvers = {
 
     findBodyPart: async (parent, args, context) => {
       if (context.user) {
-        const exerciseData = await Exercise.find('bodyPart')      
+        const exerciseData = await Exercise.find()
+        .populate('bodyPart')    
         return exerciseData;
       }
       throw new AuthenticationError('Not logged in');
     },
+
+    findExercise: async (parent, args, context) => {
+      if (context.user) {
+        const exerciseData = await Exercise.find()
+   
+        return exerciseData;
+      }
+      throw new AuthenticationError('Not logged in');
+    },
+
     findEquipment: async (parent, args, context) => {
       if (context.user) {
-        const equipmentData = await Exercise.find('equipment')      
+        const equipmentData = await Exercise.find()
+        .populate('equipment')      
         return equipmentData;
       }
       throw new AuthenticationError('Not logged in');
     },
+
     findTarget: async (parent, args, context) => {
       if (context.user) {
-        const targetData = await Exercise.find('target')      
-        return Data;
+        const targetData = await Exercise.find()
+        .populate('target')      
+        return targetData;
       }
       throw new AuthenticationError('Not logged in');
     },
@@ -76,15 +90,25 @@ const resolvers = {
          return { token, user };
     },
 
-    saveExercise: async (parent, args , context) => {
+    saveWorkout: async (parent, {...args, exerciseId } , context) => {
       if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { savedWorkout: args.input } },
+        const updatedWorkout = await User.findOneAndUpdate(
+          { _id: exerciseId },
+          //{ _id: context.user._id },
+          {$push: { exercise: exercise._id } },
+          //{ $addToSet: { workouts: exerciseId } },
           { new: true }
-        )
+          )
+          
+          // .populate('bodyPart')
+          // .populate('equipment')
+          // .populate('target')
+          // .populate('gifUrl')
+          // .populate('workoutID')
+          // .populate('name')
 
-        return updatedUser;
+          
+          return updatedWorkout;
       }
 
       throw new AuthenticationError('You need to be logged in!');
