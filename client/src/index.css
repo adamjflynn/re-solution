@@ -996,7 +996,21 @@ nav a:hover {
     align-items: center;
   }
 }
+.signup-link {
+  margin: 0 0 20px 0;
+  border: 2px solid var(--dark);
+  border-radius: var(--border-radius);
+  background-color: var(--secondary);
+  color: var(--dark);
+}
 
+.login-link {
+  margin: 0 0 20px 0;
+  border: 2px solid var(--dark);
+  border-radius: var(--border-radius);
+  background-color: var(--secondary);
+  color: var(--dark);
+}
 /* col-md */
 @media screen and (min-width: 768px) {
   .col-md-auto {

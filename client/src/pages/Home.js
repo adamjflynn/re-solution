@@ -14,7 +14,7 @@ return (
           <h3>Your resolution solution</h3>
         </div> 
         <div className="container flex-row justify-space-between-lg justify-center align-center">
-          <p><Link to="/signup" class="card">SIGN UP</Link> or <Link to="/login" class="card">LOGIN</Link> to get started on your customized fitness journey</p>
+          <p><Link to="/signup" class="signup-link">SIGN UP</Link> or <Link to="/login" class="login-link">LOGIN</Link> to get started on your customized fitness journey</p>
         </div>
         
       </div>
