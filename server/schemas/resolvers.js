@@ -90,30 +90,53 @@ const resolvers = {
          return { token, user };
     },
 
-    saveWorkout: async (parent, {...args, exerciseId } , context) => {
-      if (context.user) {
-        const updatedWorkout = await User.findOneAndUpdate(
-          { _id: exerciseId },
-          //{ _id: context.user._id },
-          {$push: { exercise: exercise._id } },
-          //{ $addToSet: { workouts: exerciseId } },
-          { new: true }
-          )
+  //   saveWorkout: async (parent, args, context) => {
+  //     if (context.user) {
+  //       const updatedWorkout = await User.findOneAndUpdate(
+  //         { _id: context.user._id },
+  //         {$push: {exercises: args.exercise._id  } },
+  //         //{ $addToSet: { exercises: exerciseId } },
+  //         { new: true }
+  //         )
           
-          // .populate('bodyPart')
-          // .populate('equipment')
-          // .populate('target')
-          // .populate('gifUrl')
-          // .populate('workoutID')
-          // .populate('name')
-
+  //         // .populate('bodyPart')
+  //         // .populate('equipment')
+  //         // .populate('target')
+  //         // .populate('gifUrl')
+  //         // .populate('workoutID')
+  //         // .populate('name')
           
-          return updatedWorkout;
-      }
+  //         console.log(exerciseId)
+          
+  //         return updatedWorkout;
+  //     }
 
-      throw new AuthenticationError('You need to be logged in!');
-  },
+  //     throw new AuthenticationError('You need to be logged in!');
+  // },
+  // saveWorkout: async (parent, args, context) =>{
+  //   if (context.user){
+  //     const saveWorkout = await Workout.create(args);
 
+
+  //     console.log(saveWorkout);
+  //   }
+
+  // }, 
+  saveWorkout: async (parent, args, context) =>{
+    if (context.user){
+      const saveWorkout = await Workout.create(args);
+  
+      await User.findByIdAndUpdate(
+        { _id: context.user._id },
+        { $addToSet: { exercise: saveWorkout } }
+        )
+        console.log(saveWorkout);
+      
+
+
+    }
+
+  }, 
   removeWorkout: async (parent, args, context) => {
     if(context.user) {
     const updatedUser = await User.findOneAndUpdate(

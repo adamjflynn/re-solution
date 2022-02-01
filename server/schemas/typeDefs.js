@@ -10,7 +10,7 @@ type User {
 }
 
 type Workout{
-    workouts: [Exercise]
+    exercise: [Exercise]
     date: String!
     duration: Int
     reps: Int
@@ -46,13 +46,14 @@ type Query {
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(email: String!, password: String!): Auth
-    saveWorkout(bodyPart: String!, equipment: String!, target: String!, gifUrl: String!, workoutID: Int, name: String!): Workout
+    saveWorkout(exerciseId: ID, date: String duration: Int, reps: Int, sets: Int): Workout
     removeWorkout(workoutID: String!): User
 }
 `;
 
 module.exports = typeDefs;
 
+//saveWorkout(exercise: [exerciseId: ID], date: String duration: Int, reps: Int, sets: Int): Workout
 //saveWorkout(bodyPart: String!, equipment: String!, target: String!, gifUrl: String!, workoutID: Int!, name: String!): Workout
 
 // saveWorkout(input: SavedWorkoutInput!): Workout

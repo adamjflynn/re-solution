@@ -6,7 +6,7 @@ const Exercise = require('./Exercise')
 
 const workoutSchema = new Schema({
 
-workouts: [
+exercise: [
     {
         type:Schema.Types.ObjectId, 
         ref: 'Exercise'
@@ -14,7 +14,7 @@ workouts: [
 ],
 
 date: {
-  type: Date,
+  type: String,
   required: true
 }, 
 
