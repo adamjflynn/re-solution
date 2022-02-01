@@ -1,45 +1,56 @@
 const { gql } = require('apollo-server-express');
-const { User } = require('../models'); //need to verify this route
+const { User, Workout } = require('../models'); //need to verify this route
 
 const typeDefs = gql`
-    type User {
-        _id: ID
-        username: String
-        savedWorkouts: [Workouts]
-    }
+type User {
+    _id: ID!
+    email: String! 
+    savedWorkout: [Workout]
+}
+type Workout{
+    workouts: [Exercise]
+    date: String!
+    duration: Int
+    reps: Int
+    sets: Int
     
-    type Workout {
-        workoutId: String
-        name: String
-        targetMuscleGroup: String
-        targetMuscle: String
-        equiptment: String
-    }
+}
+type Exercise {
     
-    type Auth {
-        token: ID!
-        User: user
-    }
+    bodyPart: String!
+    equipment: String!
+    target: String!
+    gifUrl: String!
+    id: Int!
+    name: String!
     
-    type Query {
-        me: User
-    }
-     input SavedWorkout {
-        workoutId: String
-        name: String
-        targetMuscleGroup: String
-        targetMuscle: String
-        equiptment: String
-        weight: Int
-        repitions: Int
-        sets: Int
-     }
-    
-    type Mutation {
-        login(email: String!, password: String!): Auth
-        addUser(username: String!, email: String!. password: String!): Auth
-        saveWorkout(input: SavedWorkout!): User
-        removeWorkout(workoutId: String!): User
-    }`
+}
+type Auth {
+    token: ID!
+    user: User
+}
+type Query {
+    me: [User]!
+    findBodyPart:[Exercise]!
+    findExercies: [Exercise]! 
+    findEquipment: [Exercise]!
+    findTarget: [Exercise]!
+    previousWorkouts: [Workout]!
+}
+type Mutation {
+    login(email: String!, password: String!): Auth
+    addUser(email: String!, password: String!): Auth
+    saveExercise(bodyPart: String!, equipment: String!, target: String!, gifUrl: String!, id: Int!, name: String!): Workout
+    removeWorkout(workoutId: String!): User
+}
+`;
 
-    module.exports = typeDefs;
+module.exports = typeDefs;
+
+// input SaveExecise {
+//     workouts: {[
+//         _id: ID
+//         exercises: [Exercise]
+//     ]}
+// }
+// saveWorkout(input: SavedWorkout!): Workout
