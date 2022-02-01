@@ -27,6 +27,7 @@ code {
   --spacing-three: 1rem;
   --spacing-four: calc(1rem * 1.5);
   --spacing-five: calc(1rem * 3);
+  font-family: 'Ubuntu', sans-serif;
 }
 
 * {
@@ -41,12 +42,12 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Tangerine', monospace;
+  font-family: 'Ubuntu', sans-serif;
   font-weight: 400;
   line-height: 1.5;
   font-size: 20px;
   color: var(--dark);
-  background-color: #f3fffee1;
+  background-color: #9cccc8e1;
 }
 
 h1,
@@ -995,7 +996,21 @@ nav a:hover {
     align-items: center;
   }
 }
+.signup-link {
+  margin: 0 0 20px 0;
+  border: 2px solid var(--dark);
+  border-radius: var(--border-radius);
+  background-color: var(--secondary);
+  color: var(--dark);
+}
 
+.login-link {
+  margin: 0 0 20px 0;
+  border: 2px solid var(--dark);
+  border-radius: var(--border-radius);
+  background-color: var(--secondary);
+  color: var(--dark);
+}
 /* col-md */
 @media screen and (min-width: 768px) {
   .col-md-auto {
