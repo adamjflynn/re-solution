@@ -4,21 +4,25 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
 return (
-  <main>
-    <div class="card" className="container flex-row justify-space-between-lg justify-center align-center">      
-        <h1>Welcome to</h1>     
-        <div className="container flex-row justify-space-between-lg justify-center align-center">
-          <h1>(RE)Solution</h1>
-        </div>
-        <div className="container flex-row justify-space-between-lg justify-center align-center">
-          <h3>Your resolution solution</h3>
-        </div> 
-        <div className="container flex-row justify-space-between-lg justify-center align-center">
-          <p><Link to="/signup" class="signup-link">SIGN UP</Link> or <Link to="/login" class="login-link">LOGIN</Link> to get started on your customized fitness journey</p>
-        </div>
-        
-      </div>
-  </main>
+	<main className="flex-row justify-center mb-4">
+			<div className="col-12 col-md-6">
+				<div className="card">
+					<h4 className="card-header">Welcome to (RE)Solution</h4>
+					<div className="card-body">
+          <button className="btn d-block w-100" type="submit">
+          <Link to="/signup">SIGN UP</Link> 
+							</button>
+            <h5 className="card-header">OR</h5>
+						
+							<button className="btn d-block w-100" type="submit">
+							<Link to="/login">LOGIN</Link>
+							</button>
+              <h5 className="card-header">To get started on your customized fitness journey</h5>
+					
+					</div>
+				</div>
+			</div>
+		</main>
 );
 };
 
