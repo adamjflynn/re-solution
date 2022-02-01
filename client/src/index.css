@@ -15,9 +15,9 @@ code {
 
 :root {
   --primary: #090e0e;
-  --secondary: #e4f73a;
+  --secondary: #ff7606;
   --tertiary: #040505;
-  --quatrinary: #cadbda;
+  --quatrinary: #ff7606;
   --light: #0c1111;
   --dark: #040808;
   --error: rgb(228, 1, 1);
@@ -47,7 +47,7 @@ body {
   line-height: 1.5;
   font-size: 20px;
   color: var(--dark);
-  background-color: #9cccc8e1;
+  background-color: #ff7606;
 }
 
 h1,
