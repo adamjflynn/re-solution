@@ -13,7 +13,6 @@ type Workout{
     duration: Int
     reps: Int
     sets: Int
-    
 }
 type Exercise {
     

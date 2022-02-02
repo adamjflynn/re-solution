@@ -91,17 +91,28 @@ const resolvers = {
   // },
 
   saveWorkout: async (parent, args, context) =>{
+
+    if(context.user){
     const saveWorkout = await Workout.create(args);
     saveWorkout.save();
-
     console.log(saveWorkout);
+    const addWorkoutToUser = await User.findOneAndUpdate(
+      {_id: context.user._id},
+      {$push: {savedWorkouts: {_id: saveWorkout._id}}},
+      {new: true}
+      )
+      addWorkoutToUser.save();
+      console.log(saveWorkout._id)
+      console.log(addWorkoutToUser)
+    return saveWorkout
+    }
   },
 
   removeWorkout: async (parent, args, context) => {
     if(context.user) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: context.user._id },
-      { $pull: { Workout: { _id: args.input } } },
+      { $pull: { Workout: { _id: saveWorkout._id } } },
       { new: true }
     )
     return updatedUser;
