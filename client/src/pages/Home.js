@@ -1,9 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+//import { QUERY_ME_BASIC } from '../utils/queries';
+//import Auth from '../utils/auth';
 
 const Home = () => {
+
+//This will be used if there is a rendering to show user info while logged in. 	
+//const loggedIn = Auth.loggedIn();
+
 return (
+
 	<main className="flex-row justify-center mb-4">
 			<div className="col-12 col-md-6">
 				<div className="card">

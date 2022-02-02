@@ -5,7 +5,6 @@ import Auth from '../utils/auth';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    username: '',
     email: '',
     password: '',
   });
@@ -17,8 +16,8 @@ const Signup = () => {
     const { name, value } = event.target;
 
     setFormState({
-      ...formState,
-      [name]: value,
+      ...formState
+      
     });
   };
 
@@ -44,15 +43,6 @@ const Signup = () => {
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>
-              <input
-                className="form-input"
-                placeholder="Your username"
-                name="username"
-                type="username"
-                id="username"
-                value={formState.username}
-                onChange={handleChange}
-              />
               <input
                 className="form-input"
                 placeholder="Your email"
