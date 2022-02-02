@@ -93,18 +93,18 @@ const resolvers = {
   saveWorkout: async (parent, args, context) =>{
 
     if(context.user){
-    const saveWorkout = await Workout.create(args);
-    saveWorkout.save();
-    console.log(saveWorkout);
+    const savedWorkout = await Workout.create(args);
+    savedWorkout.save();
+    console.log(savedWorkout);
     const addWorkoutToUser = await User.findOneAndUpdate(
       {_id: context.user._id},
-      {$push: {savedWorkouts: {_id: saveWorkout._id}}},
+      {$push: {savedWorkouts: {_id: savedWorkout._id}}},
       {new: true}
       )
       addWorkoutToUser.save();
-      console.log(saveWorkout._id)
-      console.log(addWorkoutToUser)
-    return saveWorkout
+      console.log(savedWorkout._id);
+      console.log(addWorkoutToUser);
+    return savedWorkout
     }
   },
 
