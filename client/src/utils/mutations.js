@@ -6,11 +6,7 @@ export const LOGIN_USER = gql`
       token
       user {
         _id
-<<<<<<< HEAD
-      }
-=======
             }
->>>>>>> 07eb9d4ef9baaf4b4455df96bbfdc1ade7b1cc13
     }
   }
 `;
