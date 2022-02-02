@@ -8,12 +8,11 @@ type User {
     savedWorkout: [Workout]
 }
 type Workout{
-    workouts: [Exercise]
+    exercise: String!
     date: String!
     duration: Int
     reps: Int
     sets: Int
-    
 }
 type Exercise {
     
@@ -40,7 +39,7 @@ type Query {
 type Mutation {
     login(email: String!, password: String!): Auth
     addUser(email: String!, password: String!): Auth
-    saveExercise(bodyPart: String!, equipment: String!, target: String!, gifUrl: String!, id: Int!, name: String!): Workout
+    saveWorkout(exercise: String!, date: String!, duration: Int, reps: Int, sets: Int ): Workout
     removeWorkout(workoutId: String!): User
 }
 `;
