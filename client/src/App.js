@@ -11,9 +11,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import NoMatch from './pages/NoMatch';
+import CreateWorkout from './pages/CreateWorkout';
+import ViewWorkouts from './pages/ViewWorkouts';
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: 'http://localhost:3007/graphql',
 });
 
 const client = new ApolloClient({
@@ -33,6 +35,8 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/createworkout" element={<CreateWorkout />} />
+              <Route path="/viewworkouts" element={<ViewWorkouts />} />
 
               <Route element={NoMatch} />
             </Routes>

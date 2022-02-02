@@ -13,18 +13,19 @@ const Signup = () => {
 
   // update state based on form input changes
   const handleChange = (event) => {
-    const { name, value } = event.target;
+   const { name, value } = event.target;
 
     setFormState({
-      ...formState
-      
+      ...formState,
+      [name]: value
+
     });
   };
 
   // submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(formState);
     try {
       const { data } = await addUser({
         variables: { ...formState },
@@ -43,6 +44,7 @@ const Signup = () => {
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
             <form onSubmit={handleFormSubmit}>
+          
               <input
                 className="form-input"
                 placeholder="Your email"

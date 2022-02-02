@@ -6,24 +6,25 @@ import { QUERY_ME } from '../utils/queries';
 // import ExerciseList from '../components/ExerciseList';
 
 const Profile = () => {
-  return (
-    <main>
-    <div className="container flex-row justify-space-between-lg justify-center align-center">      
-        <h1>User Profile (will probably use a query to import the users info?)</h1>     
-        <div className="container flex-row justify-space-between-lg justify-center align-center">
-          <h4>View Workouts (with link to previous workouts)</h4>
-        </div>
-        <div className="container flex-row justify-space-between-lg justify-center align-center">
-          <h4>Create Workout (with link to new workout page)</h4>
-        </div> 
-        <div className="container flex-row justify-space-between-lg justify-center align-center">
-          
-        </div>
-        
-      </div>
-  </main>
-  );
-  };
-  
+	return (
+		<main className="flex-row justify-center mb-4">
+			<div className="col-12 col-md-6">
+				<div className="card">
+					<h2 className="card-header">User Profile</h2>
+					<h5 className="card-header"></h5>
+					<div className="card-body">
+						<button className="btn d-block w-100" type="submit">
+							<Link to="/createworkout">Create Workout</Link>
+						</button>
+
+						<button className="btn d-block w-100" type="submit">
+							<Link to="/viewworkouts">View Workouts</Link>
+						</button>
+					</div>
+				</div>
+			</div>
+		</main>
+	);
+};
 
 export default Profile;
