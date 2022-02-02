@@ -15,7 +15,7 @@ type Workout{
     sets: Int
 }
 type Exercise {
-    
+    _id: ID!
     bodyPart: String!
     equipment: String!
     target: String!
@@ -31,7 +31,7 @@ type Auth {
 type Query {
     me: [User]!
     findBodyPart:[Exercise]!
-    findExercies: [Exercise]! 
+    findExerciseById: [Exercise]! 
     findEquipment: [Exercise]!
     findTarget: [Exercise]!
     previousWorkouts: [Workout]!
