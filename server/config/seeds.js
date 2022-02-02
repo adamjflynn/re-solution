@@ -67,12 +67,12 @@ db.once('open', async () => {
     const workouts = await Workout.insertMany([
         {
             exercise: exercises[0],
-            date: 2022-01-05,
+            date: "2022-01-05",
             duration: 20
         },
         {
             exercise: exercises[5],
-            date: 2022-01-06,
+            date: "2022-01-06",
             reps: 10,
             sets: 3
         }

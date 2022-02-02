@@ -76,18 +76,25 @@ const resolvers = {
          return { token, user };
     },
 
-    saveExercise: async (parent, args , context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { savedWorkout: args.input } },
-          { new: true }
-        )
+  //   saveExercise: async (parent, args , context) => {
+  //     if (context.user) {
+  //       const updatedUser = await User.findOneAndUpdate(
+  //         { _id: context.user._id },
+  //         { $addToSet: { savedWorkout: args.input } },
+  //         { new: true }
+  //       )
 
-        return updatedUser;
-      }
+  //       return updatedUser;
+  //     }
 
-      throw new AuthenticationError('You need to be logged in!');
+  //     throw new AuthenticationError('You need to be logged in!');
+  // },
+
+  saveWorkout: async (parent, args, context) =>{
+    const saveWorkout = await Workout.create(args);
+    saveWorkout.save();
+
+    console.log(saveWorkout);
   },
 
   removeWorkout: async (parent, args, context) => {
