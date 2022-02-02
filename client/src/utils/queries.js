@@ -4,7 +4,6 @@
 //   query user($username: String!) {
 //     user(username: $username) {
 //       _id
-//       username
 //       email
 //       }
       
