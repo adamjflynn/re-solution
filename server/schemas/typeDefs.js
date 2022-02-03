@@ -47,10 +47,3 @@ type Mutation {
 
 module.exports = typeDefs;
 
-// input SaveExecise {
-//     workouts: {[
-//         _id: ID
-//         exercises: [Exercise]
-//     ]}
-// }
-// saveWorkout(input: SavedWorkout!): Workout

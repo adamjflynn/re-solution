@@ -3,9 +3,14 @@ import { Link } from 'react-router-dom';
 // import ExerciseList from '../components/ExerciseList';
 
 import { useQuery } from "@apollo/client";
-import { QUERY_USER } from "../utils/queries";
+import { QUERY_ME } from "../utils/queries";
 
-const CreateWorkout = () => {
+const ViewSavedWorkouts = () => {
+
+	const { loading, data } = useQuery(QUERY_ME);
+	console.log(data)
+	
+
 	return (
 		<main>
 			<div className="container flex-row justify-space-between-lg justify-center align-center">
@@ -27,4 +32,4 @@ const CreateWorkout = () => {
 	);
 };
 
-export default CreateWorkout;
+export default ViewSavedWorkouts;
