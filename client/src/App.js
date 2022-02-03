@@ -15,7 +15,7 @@ import CreateWorkout from './pages/CreateWorkout';
 import ViewWorkouts from './pages/ViewWorkouts';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3007/graphql',
+  uri: '/graphql',
 });
 
 const client = new ApolloClient({
