@@ -1,5 +1,5 @@
-import { Modal, useState} from 'react-bootstrap';
-//import React, { useState, useEffect } from "react";
+import { Modal, Button, } from 'react-bootstrap';
+import React, { useState, useEffect } from "react";
 import { useQuery } from '@apollo/client';
 import { QUERY_ALLEXERCISES } from '../utils/queries';
 import ExerciseList from '../components/ExcerciseList';
@@ -11,24 +11,68 @@ import ExerciseList from '../components/ExcerciseList';
 //import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 //import { SAVE_BOOK } from '../utils/mutations';
 
+
+
 const CreateWorkout = () => {
-	
-	//const [modalShow, setModalShow] = React.useState(false);
+
 	const { loading, data } = useQuery(QUERY_ALLEXERCISES);
 	console.log(data)
 	const exercise = data?.allExercises || [];
 	console.log (exercise)
 	
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const [modalShow, setModalShow] = useState(false);
+	
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		
+		//const handleShow = () => setShow(true);
+		console.log(event.target.value)
+		
+		// const pickedName = event.target.value.allExercises.name
+		// const pickedBodyPart = event.target.value.allExercises.bodyPart
+		// const pickedEquipment = event.target.value.allExercises.equipment
+		// const pickedTarget = event.target.value.allExercises.target
+
+		
+
+
+
+	}
 
 	return (
 			<div>
 				<div className="flex-row justify-space-between">
-					<div className="col-12 mb-3">
+					<div className="col-12 mb-3" onSumbit={handleSubmit}>
 						{loading ? (
 							<div>Loading...</div>
 						) : (
-							<ExerciseList exercise={exercise} title="Pick an exercise to add to your workout"></ExerciseList>
-						)}
+							<ExerciseList exercise={exercise} title="Pick an exercise to add to your workout">
+
+								<Modal className="modalContainer" show={show} onHide={handleClose}>
+									<Modal.Header closeButton>
+									<Modal.Title>{exercise.name}</Modal.Title>
+									</Modal.Header>
+									<Modal.Body>
+									{exercise.bodyPart}
+									{exercise.equipment}
+									{exercise.target}
+									</Modal.Body>
+									<Modal.Footer>
+									<Button variant="secondary" onClick={handleClose}>
+									Close
+									</Button>
+									<Button variant="primary" onClick={handleClose}>
+									Save Changes
+									</Button>
+									</Modal.Footer>
+									</Modal> 
+
+						  </ExerciseList>
+									)}
+						  
+							
 					</div>
 				</div>
 			</div>

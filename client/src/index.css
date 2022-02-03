@@ -1011,6 +1011,16 @@ nav a:hover {
   background-color: var(--secondary);
   color: var(--dark);
 }
+.exerciseCard {
+  align-items: center;
+  color: lightgray
+}
+.card-img {
+  width: 318px;
+  height: 318px;
+  aspect-ratio: auto 318 / 318;
+
+}
 /* col-md */
 @media screen and (min-width: 768px) {
   .col-md-auto {
