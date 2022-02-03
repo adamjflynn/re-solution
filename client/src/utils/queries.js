@@ -46,3 +46,25 @@ export const QUERY_ME_BASIC = gql`
      }
  }
 `;
+
+export const QUERY_FINDTARGET = gql`
+{
+    findTarget{
+        target
+    }
+}
+`;
+export const QUERY_FINDBODYPART = gql`
+{
+    findBodyPart{
+        bodyPart
+    }
+}
+`;
+export const QUERY_FINDEQUIPMENT = gql`
+{
+    findEquipment{
+        equipment
+    }
+}
+`;

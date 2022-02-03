@@ -2,6 +2,8 @@ import React from 'react';
 import { ApolloProvider, ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
+import { setContext } from '@apollo/client/link/context';
+
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -15,13 +17,32 @@ import CreateWorkout from './pages/CreateWorkout';
 import ViewWorkouts from './pages/ViewWorkouts';
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:3007/graphql',
+  uri: process.env.NODE_ENV === 'production' ? '/graphql' : 'http;//localhost:3007/graphql',
+});
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token? `Bearer ${token}` : '',
+    },
+  };
 });
 
 const client = new ApolloClient({
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
+// const httpLink = createHttpLink({
+//   uri: 'http://localhost:3007/graphql',
+// });
+
+// const client = new ApolloClient({
+//   link: httpLink,
+//   cache: new InMemoryCache(),
+// });
 
 function App() {
   return (
@@ -37,8 +58,7 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="/createworkout" element={<CreateWorkout />} />
               <Route path="/viewworkouts" element={<ViewWorkouts />} />
-
-              <Route element={NoMatch} />
+              <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
           <Footer />
