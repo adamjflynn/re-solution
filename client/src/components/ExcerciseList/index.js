@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card } from 'react-bootstrap';
+import { Container, Card, Button } from 'react-bootstrap';
 
 
 const ExerciseList = ({ exercise }) => {
@@ -19,6 +19,7 @@ const ExerciseList = ({ exercise }) => {
                   <Card.Text>{exercise.bodyPart}</Card.Text>
                   <Card.Text>{exercise.equipment}</Card.Text>
                   <Card.Text>{exercise.target}</Card.Text>
+                  <Button variant="primary"> Pick this Exercise </Button>
                 </Card.Body>
               </Card>
            ))}

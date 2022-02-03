@@ -22,6 +22,7 @@ export const QUERY_ME = gql`
      }
  }
 `;
+
 export const QUERY_ALLEXERCISES = gql`
  {
      allExercises{

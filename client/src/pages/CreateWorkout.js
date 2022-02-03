@@ -1,4 +1,4 @@
-import { Container } from 'react-bootstrap';
+import { Modal, useState} from 'react-bootstrap';
 //import React, { useState, useEffect } from "react";
 import { useQuery } from '@apollo/client';
 import { QUERY_ALLEXERCISES } from '../utils/queries';
@@ -12,13 +12,14 @@ import ExerciseList from '../components/ExcerciseList';
 //import { SAVE_BOOK } from '../utils/mutations';
 
 const CreateWorkout = () => {
-		
+	
+	//const [modalShow, setModalShow] = React.useState(false);
 	const { loading, data } = useQuery(QUERY_ALLEXERCISES);
 	console.log(data)
-	const exercise = data?.exercise || [];
+	const exercise = data?.allExercises || [];
 	console.log (exercise)
-
 	
+
 	return (
 			<div>
 				<div className="flex-row justify-space-between">
@@ -35,6 +36,14 @@ const CreateWorkout = () => {
 	};
 	
 	export default CreateWorkout;
+	
+	// <MyVerticallyCenteredModal
+	// show={modalShow}
+	// onHide={() => setModalShow(false)}
+	//   />
+	  
+	  
+
 	
 	// 	<Container>
 	// 	<Form onSubmit={handleFormSubmit}>
