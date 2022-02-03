@@ -14,11 +14,11 @@ code {
 
 
 :root {
-  --primary: #090e0e;
-  --secondary: #ff7606;
-  --tertiary: #040505;
-  --quatrinary: #ff7606;
-  --light: #0c1111;
+  --primary: #090E0E;
+  --secondary: #FF7606;
+  --tertiary: #FFFFFF;
+  --quatrinary: #FF7606;
+  --light: #0C1111;
   --dark: #040808;
   --error: rgb(228, 1, 1);
   --border-radius: 0.3rem;
