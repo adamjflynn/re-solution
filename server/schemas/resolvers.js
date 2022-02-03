@@ -16,6 +16,13 @@ const resolvers = {
       }
       throw new AuthenticationError('Not logged in');
     },
+    allExercises: async (parent, args, context) => {
+      if(context.user) {
+        const exerciseData = await Exercise.find()
+        return exerciseData
+      }
+      throw new AuthenticationError('Not logged in');
+    },
     findExerciseById: async (parent, args, context) => {
       if(context.user) {
         const exerciseByIdData = await Exercise.findOne({ _id: context.exercise._id})

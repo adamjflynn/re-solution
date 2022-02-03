@@ -1,18 +1,3 @@
-// import { gql } from '@apollo/client';
-
-// export const QUERY_USER = gql`
-//   query user($username: String!) {
-//     user(username: $username) {
-//       _id
-//       email
-//       }
-      
-//       }
-//     }
-//   }
-// `;
-
-
 import { gql } from '@apollo/client';
 
 export const QUERY_ME = gql`
@@ -37,12 +22,15 @@ export const QUERY_ME = gql`
      }
  }
 `;
-
-export const QUERY_ME_BASIC = gql`
+export const QUERY_ALLEXERCISES = gql`
  {
-     me{
-         _id
-         email
+     allExercises{
+                bodyPart
+                equipment
+                target
+                gifUrl
+                workoutID
+                name
      }
  }
 `;

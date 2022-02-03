@@ -1,25 +1,31 @@
 import React from 'react';
+import { Container, Card } from 'react-bootstrap';
 
-const ExerciseList = ({ exercise, title }) => {
+
+const ExerciseList = ({ exercise }) => {
   if (!exercise.length) {
-    return <h3>Workout</h3>;
+    return <h3>No Exercises Avaible</h3>;
   }
-
+  
   return (
-    <div>
-      <h3>{title}</h3>
-      {exercise &&
-        exercise.map(exercise => (
-          <div key={exercise._id} className="card mb-3">
-            <p className="card-header">
-              {exercise.username}
-              Exercise on {exercise.createdAt}
-            </p>
-            
-          </div>
-        ))}
-    </div>
-  );
+         <Container>
+           {exercise && exercise.map(exercise => (
+              <Card key={exercise.workoutID} border='dark'>
+                {exercise.image ? (
+                  <Card.Img src={exercise.gifUrl} alt={`The cover for ${exercise.name}`} variant='top' />
+                  ) : null}
+                <Card.Body>
+                  <Card.Title>{exercise.name}</Card.Title>
+                  <Card.Text>{exercise.bodyPart}</Card.Text>
+                  <Card.Text>{exercise.equipment}</Card.Text>
+                  <Card.Text>{exercise.target}</Card.Text>
+                </Card.Body>
+              </Card>
+           ))}
+         </Container>
+        );
 };
+  
+  export default ExerciseList;
 
-export default ExerciseList;
+

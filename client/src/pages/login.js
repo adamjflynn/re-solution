@@ -34,13 +34,13 @@ const Login = (props) => {
 			console.error(e);
 		}
 		
-		navigate("/viewworkouts")
+		navigate("/profile");
+
 		// setFormState({
 		// 	email: "",
 		// 	password: "",
 		// });
 	};
-
 
 	return (
 		<main className="flex-row justify-center mb-4">
