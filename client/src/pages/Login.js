@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-
 import Auth from '../utils/auth';
+
 
 
 const Login = (props) => {
@@ -20,7 +20,7 @@ const Login = (props) => {
 
 	const handleFormSubmit = async (event) => {
 		event.preventDefault();
-
+		console.log(formState)
         try {
             const { data } = await login({
               variables: { ...formState },

@@ -76,25 +76,43 @@ const resolvers = {
          return { token, user };
     },
 
-    saveExercise: async (parent, args , context) => {
-      if (context.user) {
-        const updatedUser = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { savedWorkout: args.input } },
-          { new: true }
-        )
+  //   saveExercise: async (parent, args , context) => {
+  //     if (context.user) {
+  //       const updatedUser = await User.findOneAndUpdate(
+  //         { _id: context.user._id },
+  //         { $addToSet: { savedWorkout: args.input } },
+  //         { new: true }
+  //       )
 
-        return updatedUser;
-      }
+  //       return updatedUser;
+  //     }
 
-      throw new AuthenticationError('You need to be logged in!');
+  //     throw new AuthenticationError('You need to be logged in!');
+  // },
+
+  saveWorkout: async (parent, args, context) =>{
+
+    if(context.user){
+    const savedWorkout = await Workout.create(args);
+    savedWorkout.save();
+    console.log(savedWorkout);
+    const addWorkoutToUser = await User.findOneAndUpdate(
+      {_id: context.user._id},
+      {$push: {savedWorkouts: {_id: savedWorkout._id}}},
+      {new: true}
+      )
+      addWorkoutToUser.save();
+      console.log(savedWorkout._id);
+      console.log(addWorkoutToUser);
+    return savedWorkout
+    }
   },
 
   removeWorkout: async (parent, args, context) => {
     if(context.user) {
     const updatedUser = await User.findOneAndUpdate(
       { _id: context.user._id },
-      { $pull: { Workout: { _id: args.input } } },
+      { $pull: { Workout: { _id: saveWorkout._id } } },
       { new: true }
     )
     return updatedUser;
