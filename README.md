@@ -28,7 +28,7 @@
   ## Usage
 
   A Workout application giving the user the abiliity to customize their workouts with a library of different exercises  
-  ![Screenshot of Application]
+  ![Screenshot of Application]("https://github.com/adamjflynn/re-solution/blob/main/client/public/assets/images/HomePage.JPG?raw=true")
   
   ## Tests
 
