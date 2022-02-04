@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Card, Button, Modal } from 'react-bootstrap';
-import { useState } from "react";
+import { Container, Card, Button } from 'react-bootstrap';
+
 
 
 const ExerciseList = ({ exercise }) => {

@@ -1,5 +1,4 @@
 import { Modal, Button, } from 'react-bootstrap';
-import React, { useState, useEffect, setShow } from "react";
 import { useQuery } from '@apollo/client';
 import { QUERY_ALLEXERCISES } from '../utils/queries';
 import ExerciseList from '../components/ExcerciseList';
