@@ -1,30 +1,36 @@
-import React from "react";
+import { Modal, Button, } from 'react-bootstrap';
+import { useQuery } from '@apollo/client';
+import { QUERY_ALLEXERCISES } from '../utils/queries';
+import ExerciseList from '../components/ExcerciseList';
+//import Auth from '../utils/auth';
 
-import { useParams } from "react-router-dom";
-import { Link } from 'react-router-dom';
 
-// import ExerciseList from '../components/ExerciseList';
-
-import { useQuery } from "@apollo/client";
-import { QUERY_USER } from "../utils/queries";
 
 const CreateWorkout = () => {
+	const { loading, data } = useQuery(QUERY_ALLEXERCISES);
+	console.log(data)
+	const exercise = data?.allExercises || [];
+	console.log (exercise)
+
+
 	return (
-		<main>
-			<div className="container flex-row justify-space-around-lg">
-				<h1>Create Workout</h1>
-				<div className="container flex-row justify-space-around-lg">
-					<h4>Something here</h4>
-				</div>
-				<div className="container flex-row justify-space-around-lg">
-					<h4>Something here</h4>
-				</div>
-				<div className="container flex-row justify-space-around-lg">
-					<h4>Something here</h4>
+			<div>
+				<div className="flex-row justify-space-between">
+					<div className="col-12 mb-3" >
+						{loading ? (
+							<div>Loading...</div>
+						) : (
+							<ExerciseList exercise={exercise} title="Pick an exercise to add to your workout">
+						  </ExerciseList>
+									)}
+						  
+							
+					</div>
 				</div>
 			</div>
-		</main>
-	);
-};
-
-export default CreateWorkout;
+		);
+	};
+	
+	export default CreateWorkout;
+	
+	
