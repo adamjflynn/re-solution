@@ -17,7 +17,7 @@ const Profile = () => {
 		
 			
 			
-		<div className="flex-row mb-4">
+		<div className="flex-row mb-4 justify-space-around">
 			<div className="col-12 col-md-6">
 				<div className="card">
 					<h2 className="card-header">User Profile</h2>
